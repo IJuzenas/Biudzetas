@@ -141,7 +141,7 @@ public class Main {
         System.out.println("Įveskite įrašo ID:");
         long id = skPasirinkimas(scanner);
         irasas = biudzetas.gautiIrasaPagalID(id);
-        if (irasas == null) {
+        if (irasas.getId() == 0) {
             System.out.println("Klaida! Tokio įrašo nėra!");
         } else {
             if (irasas != null) {
