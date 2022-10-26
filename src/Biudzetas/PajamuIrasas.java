@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class PajamuIrasas extends Irasas {
 
-    public final static String irasoTipas = "Pajamų-įrašas";
+    public final static String irasoTipas = "Pajamu-irasas";
 
     private PajamuKategorija kategorija;
 
@@ -41,7 +41,7 @@ public class PajamuIrasas extends Irasas {
 
     @Override
     public String toCsv() {
-            return String.format("%s,%s,%s", irasoTipas, super.toCsv(), kategorija.getNumeris());
+            return String.format("%s,%s,%s,%s", irasoTipas, super.toCsv(), kategorija.getNumeris(), kategorija.getPavadinimas());
         }
     }
 

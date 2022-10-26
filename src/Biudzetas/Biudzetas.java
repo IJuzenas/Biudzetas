@@ -3,7 +3,7 @@ package Biudzetas;
 import java.util.ArrayList;
 
 public class Biudzetas {
-    private ArrayList<Irasas> irasai = new ArrayList<>();
+    public ArrayList<Irasas> irasai = new ArrayList<>();
     public void pridetiIrasa(Irasas irasas) {
         irasai.add(irasas);
     }
@@ -32,7 +32,7 @@ public class Biudzetas {
             }
         } return islaiduIrasai;
     }
-    public ArrayList<Irasas> gautiVisusIrasus() {
+        public ArrayList<Irasas> gautiVisusIrasus() {
         return irasai;
     }
     public float balansas() {

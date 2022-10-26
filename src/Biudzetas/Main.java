@@ -7,47 +7,20 @@ import java.util.*;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
+    static Biudzetas biudzetas = new Biudzetas();
+    static Irasas irasas = new Irasas();
 
     public static void main(String[] args) throws IOException {
-        Biudzetas biudzetas = new Biudzetas();
-        Irasas irasas = new Irasas();
 
         boolean run = true;
         while (run) {
             int pasirinkimas = menu(scanner);
             switch (pasirinkimas) {
                 case 1:
-                    int irasoPasirinkimas = irasoPasirinkimas(scanner);
-                    switch (irasoPasirinkimas) {
-                        case 1:
-                            biudzetas.pridetiIrasa(naujasPajamuIrasas(scanner));
-                            break;
-                        case 2:
-                            biudzetas.pridetiIrasa(naujasIslaiduIrasas(scanner));
-                            break;
-                        default:
-                            System.out.println("Pasirinkite iš siūlomų variantų");
-                    }
-
+                    irasuIvedimas(scanner);
                     break;
                 case 2:
-                    int pasirinktiIrasus = pasirinktiIrasus(scanner);
-                    switch (pasirinktiIrasus) {
-
-                        case 1:
-                            spausdintiIrasus(biudzetas.gautiVisusPajamuIrasus());
-                            break;
-                        case 2:
-                            spausdintiIrasus(biudzetas.gautiVisusIslaiduIrasus());
-                            break;
-                        case 3:
-                            spausdintiIrasus(biudzetas.gautiVisusIrasus());
-                            break;
-                        default:
-                            System.out.println("Įveskite simbolį iš siūlomų pasirinkimų!");
-                            menu(scanner);
-                    }
-
+                   gautiIrasus(scanner);
                     break;
                 case 3:
                     trintiIrasa(scanner, irasas, biudzetas);
@@ -69,7 +42,6 @@ public class Main {
                     scanner.close();
                     break;
                 default:
-
                     System.out.println("Pasirinkite iš siūlomo menu:");
                     menu(scanner);
             }
@@ -79,7 +51,7 @@ public class Main {
 
 
     private static int menu(Scanner scanner) {
-        System.out.println("Menu:\n 1- Įvesti įrašą\n 2 - Gauti įrašus\n 3 - Trinti įrašą\n 4 - Redaguoti įrašą\n 5 - Balansas\n 6 -Saugoti duomenis į faią\n 7- Gauti duomenis iš failo\n 8 - Exit\n");
+        System.out.println("Menu:\n 1- Įvesti įrašą\n 2 - Gauti įrašus\n 3 - Trinti įrašą\n 4 - Redaguoti įrašą\n 5 - Balansas\n 6 -Saugoti duomenis į failą\n 7- Gauti duomenis iš failo\n 8- Exit\n");
         return skPasirinkimas(scanner, 1, 2, 3, 4, 5, 6, 7, 8);
     }
 
@@ -111,7 +83,19 @@ public class Main {
                         " 2- išlaidų");
         return skPasirinkimas(scanner, 1, 2, 3);
     }
-
+    private static void irasuIvedimas (Scanner scanner) {
+        int irasoPasirinkimas = irasoPasirinkimas(scanner);
+        switch (irasoPasirinkimas) {
+            case 1:
+                biudzetas.pridetiIrasa(naujasPajamuIrasas(scanner));
+                break;
+            case 2:
+                biudzetas.pridetiIrasa(naujasIslaiduIrasas(scanner));
+                break;
+            default:
+                System.out.println("Pasirinkite iš siūlomų variantų");
+        }
+    }
     private static boolean arSkaiciusYraSarase(final int[] skaiciuSarasas, final int skaicius) {
         boolean result = false;
         for (int i : skaiciuSarasas) {
@@ -121,6 +105,24 @@ public class Main {
             }
         }
         return result;
+    }
+    private static void gautiIrasus(Scanner scanner) {
+        int pasirinktiIrasus = pasirinktiIrasus(scanner);
+        switch (pasirinktiIrasus) {
+
+            case 1:
+                spausdintiIrasus(biudzetas.gautiVisusPajamuIrasus());
+                break;
+            case 2:
+                spausdintiIrasus(biudzetas.gautiVisusIslaiduIrasus());
+                break;
+            case 3:
+                spausdintiIrasus(biudzetas.gautiVisusIrasus());
+                break;
+            default:
+                System.out.println("Įveskite simbolį iš siūlomų pasirinkimų!");
+                menu(scanner);
+        }
     }
 
     private static int pasirinktiIrasus(Scanner scanner) {
@@ -196,19 +198,17 @@ public class Main {
     private static void trintiIrasa(Scanner scanner, Irasas irasas, Biudzetas biudzetas) {
         System.out.println("Įveskite ID:");
         long id = skPasirinkimas(scanner);
-        biudzetas.pasalintiIrasa(id);
-        if (id != irasas.getId()) {
+        if (Objects.equals(id, irasas.getId())) {
             System.out.println("Klaida! Tokio įrašo nėra!");
+        }  else {
+            biudzetas.pasalintiIrasa(id);
         }
-    }
-
-
-    private static void spausdintiIrasus(ArrayList<Irasas> irasai) {
+        }
+        private static void spausdintiIrasus(ArrayList<Irasas> irasai) {
         for (Irasas irasas : irasai) {
             System.out.println(irasas);
         }
     }
-
     private static Irasas naujasIslaiduIrasas(Scanner scanner) {
         IslaiduIrasas islaiduIrasas = new IslaiduIrasas();
         System.out.println("Suma: ");

@@ -3,7 +3,7 @@ package Biudzetas;
 import java.time.LocalDate;
 
 public class IslaiduIrasas extends Irasas {
-    public final static String irasoTipas = "Išlaidų-įrašas";
+    public final static String irasoTipas = "Islaidų-irasas";
 
     private IslaiduKategorija kategorija;
 
@@ -41,6 +41,6 @@ public class IslaiduIrasas extends Irasas {
 
     @Override
     public String toCsv() {
-        return String.format("%s,%s,%s", irasoTipas, super.toCsv(), kategorija.getNumeris());
+        return String.format("%s,%s,%s,%s", irasoTipas, super.toCsv(), kategorija.getNumeris(), kategorija.getPavadinimas());
     }
 }

@@ -3,7 +3,6 @@ package Biudzetas;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class File {
 
@@ -21,9 +20,10 @@ public class File {
             for (Irasas irasas : irasai) {
                 pw.println(irasas.toCsv());
             }
-
         } catch (IOException e) {
             System.out.println("Sistemos klaida. Nepavyko įrašyti į failą.");
+        }catch (NullPointerException npe) {
+            System.out.println("Printwritteris negali uzsidaryti");
         } finally {
             assert pw != null;
             pw.close();
@@ -52,7 +52,7 @@ public class File {
         Irasas irasas = null;
         if (PajamuIrasas.irasoTipas.equals(data[0])) {
             PajamuIrasas pajamuIrasas = new PajamuIrasas();
-            pajamuIrasas.setId(Long.parseLong(data[1]));
+//          pajamuIrasas.setId(Long.parseLong(data[1]));
             pajamuIrasas.setSuma(Double.parseDouble(data[2]));
             pajamuIrasas.setData(LocalDate.parse(data[3]));
             pajamuIrasas.setPapildomaInfo(data[4]);
@@ -60,7 +60,7 @@ public class File {
             irasas = pajamuIrasas;
         } else if (IslaiduIrasas.irasoTipas.equals(data[0])) {
             IslaiduIrasas islaiduIrasas = new IslaiduIrasas();
-            islaiduIrasas.setId(Long.parseLong(data[1]));
+//          islaiduIrasas.setId(Long.parseLong(data[1]));
             islaiduIrasas.setSuma(Double.parseDouble(data[2]));
             islaiduIrasas.setData(LocalDate.parse(data[3]));
             islaiduIrasas.setPapildomaInfo(data[4]);

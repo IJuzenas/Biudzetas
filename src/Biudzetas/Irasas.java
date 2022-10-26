@@ -20,7 +20,7 @@ public class Irasas {
 
     @Override
     public String toString() {
-        return String.format("ID=%d,Suma=%.2f,Data:%s,PapildomaInfo:%s", id, suma, data, papildomaInfo);
+        return String.format("ID:%d,Suma=%.2f,Data:%s,PapildomaInfo:%s", id, suma, data, papildomaInfo);
     }
 
     @Override
@@ -65,6 +65,6 @@ public class Irasas {
     }
 
     public String toCsv() {
-        return String.format("%d,%.2f,%s,%s", id, suma, data, papildomaInfo);
+        return String.format("ID:%d,%.2f,%s,%s", id, suma, data, papildomaInfo);
     }
 }
