@@ -3,6 +3,8 @@ package Biudzetas;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class File {
 
@@ -32,20 +34,20 @@ public class File {
     }
 
     public static ArrayList<Irasas> gautiDuomenis() throws IOException {
-        ArrayList<Irasas> irasai = new ArrayList<>();
+        ArrayList<Irasas> irasai = new ArrayList<Irasas>();
         String linija = "";
-        String path = "/Users/Ignas/IdeaProjects/Biudzetas/src/failas.csv";
+        String path = "src/failas.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             while ((linija = br.readLine()) != null) {
                 String[] data = linija.split(",");
                 irasai.add(irasasIsCSV(linija));
+//                irasai.add(irasasIsCSV(linija));
             }
         } catch (IOException e) {
             System.out.println("Sistemos klaida. Nepavyko nuskaityti duomenų iš failo.");
         }
         return irasai;
     }
-
 
     private static Irasas irasasIsCSV(String csv) {
         String[] data = csv.split(",");

@@ -3,7 +3,7 @@ package Biudzetas;
 import java.time.LocalDate;
 
 public class IslaiduIrasas extends Irasas {
-    public final static String irasoTipas = "Islaidų-irasas";
+    public final static String irasoTipas = "Islaidu-irasas";
 
     private IslaiduKategorija kategorija;
 

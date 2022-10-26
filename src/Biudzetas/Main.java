@@ -6,6 +6,7 @@ import java.util.*;
 
 
 public class Main {
+    public static ArrayList<Irasas> irasai = new ArrayList<>();
     public static Scanner scanner = new Scanner(System.in);
     static Biudzetas biudzetas = new Biudzetas();
     static Irasas irasas = new Irasas();
@@ -49,9 +50,15 @@ public class Main {
         while (true) ;
     }
 
+//    private static void pernumeruotiId(ArrayList<Irasas> irasai) {
+//        for (int i = 0; i < irasai.size(); i++) {
+//            irasai.get(i).setId(i);
+//        }
+//    }
+
 
     private static int menu(Scanner scanner) {
-        System.out.println("Menu:\n 1- Įvesti įrašą\n 2 - Gauti įrašus\n 3 - Trinti įrašą\n 4 - Redaguoti įrašą\n 5 - Balansas\n 6 -Saugoti duomenis į failą\n 7- Gauti duomenis iš failo\n 8- Exit\n");
+        System.out.println("Menu:\n 1- Įvesti įrašą\n 2 - Gauti įrašus\n 3 - Trinti įrašą\n 4 - Redaguoti įrašą\n 5 - Balansas\n 6 -Saugoti duomenis į failą\n 7- Gauti duomenis iš failo\n 8- Exit");
         return skPasirinkimas(scanner, 1, 2, 3, 4, 5, 6, 7, 8);
     }
 
