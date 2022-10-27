@@ -22,6 +22,8 @@ public class File {
             for (Irasas irasas : irasai) {
                 pw.println(irasas.toCsv());
             }
+            pw.flush();
+            System.out.println("Duomenys sėkmingai išsaugoti į failą!");
         } catch (IOException e) {
             System.out.println("Sistemos klaida. Nepavyko įrašyti į failą.");
         }catch (NullPointerException npe) {
@@ -29,7 +31,6 @@ public class File {
         } finally {
             assert pw != null;
             pw.close();
-            System.out.println("Duomenys sėkmingai išsaugoti į failą!");
         }
     }
 
